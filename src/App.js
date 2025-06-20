@@ -7,19 +7,19 @@ import ContactOverlay from './components/ContactOverlay';
 import Header from './components/Header';
 import LoadingScreen from './components/LoadingScreen';
 import { projects } from './data';
-import './styles.css'; // Import global styles
+import './styles.css';
 
 function App() {
   const [openProjectId, setOpenProjectId] = useState(null);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Assume loading initially
+  const [isLoading, setIsLoading] = useState(true);
 
   const selectedProject = projects.find(p => p.id === openProjectId);
 
   const handleScreenClick = (projectId) => {
     setOpenProjectId(projectId);
-    setIsAboutOpen(false); // Close other overlays
+    setIsAboutOpen(false);
     setIsContactOpen(false);
   };
 
@@ -29,7 +29,7 @@ function App() {
 
   const openAbout = () => {
     setIsAboutOpen(true);
-    setOpenProjectId(null); // Close other overlays
+    setOpenProjectId(null);
     setIsContactOpen(false);
   };
 
@@ -37,7 +37,7 @@ function App() {
 
   const openContact = () => {
     setIsContactOpen(true);
-    setOpenProjectId(null); // Close other overlays
+    setOpenProjectId(null);
     setIsAboutOpen(false);
   };
 
