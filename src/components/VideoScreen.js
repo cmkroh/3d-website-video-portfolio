@@ -7,7 +7,6 @@ function VideoScreen({ project, onClick, ...props }) {
   const texture = useLoader(TextureLoader, project.thumbnailUrl);
   const [hovered, setHovered] = useState(false);
 
-  // Optional: Add subtle animation like floating
   // useFrame(() => {
   //   if (meshRef.current) {
   //     meshRef.current.rotation.y += 0.001;
@@ -16,16 +15,15 @@ function VideoScreen({ project, onClick, ...props }) {
 
   return (
     <mesh
-      {...props} // Apply position, rotation etc passed from parent
+      {...props}
       ref={meshRef}
-      scale={hovered ? [1.1, 1.1, 1.1] : [1, 1, 1]} // Scale up on hover
+      scale={hovered ? [1.1, 1.1, 1.1] : [1, 1, 1]}
       onClick={onClick}
       onPointerOver={(event) => { event.stopPropagation(); setHovered(true); }}
       onPointerOut={(event) => setHovered(false)}
     >
-      {/* Adjust size based on typical video aspect ratios like 16:9 */}
       <planeGeometry args={[1.6, 0.9]} />
-      <meshStandardMaterial map={texture} /> {/* Use StandardMaterial for lighting */}
+      <meshStandardMaterial map={texture} />
     </mesh>
   );
 }
